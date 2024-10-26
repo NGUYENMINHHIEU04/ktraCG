@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm cặp số chia hết cho k</title>
+</head>
+<body>
+    <h1>Tìm cặp số chia hết cho k</h1>
+    <input type="text" id="arrayInput" placeholder="Nhập mảng">
+    <input type="number" id="k" placeholder="Nhập k">
+    <button id="findButton">Tìm</button>
+
+    <h2>Kết quả:</h2>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("findButton").addEventListener("click", function() {
+            const arr = document.getElementById("arrayInput").value.map(Number);
+            const k = parseInt(document.getElementById("k").value);
+            const pairs = [];
+
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j < arr.length; j++) {
+                    // Kiểm tra tổng của cặp số có chia hết cho k không
+                    if ((arr[i] + arr[j]) % k === 0) {
+                        pairs.push(arr[i],arr[j]); // Thêm cặp số vào danh sách
+                    }
+                }
+            }
+            document.getElementById("result").innerHTML = pairs.length > 0 ? pairs.join(',') : "Không có cặp nào.";
+        });
+    </script>
+</body>
+</html>

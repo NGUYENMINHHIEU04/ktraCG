@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label name="nhapdiem">Nhap diem</label>
+    <input type="number" name="diem" id="">
+    <button type="submit" onclick="lamTronDiem()"> submit </button>
+    <p id="result"></p>
+</body>
+<script>
+
+    function lamTronDiem() {
+        const diem = document.getElementsByName("diem")
+        let resutl = "";
+        // Kiểm tra xem điểm có nhỏ hơn 0 hoặc lớn hơn 100 không
+        if (diem < 0 || diem > 100) {
+            resutl = "Điểm không hợp lệ. Phải nằm trong khoảng từ 0 đến 100.";
+        } else if (diem > 50 && diem%5==0) {
+            resutl = "pass";
+        } else if (diem < 50) {
+            resutl = diem;
+            // Tính số nguyên gần nhất chia hết cho 5
+            const diemgannhat = Math.ceil((diem / 5) * 5);
+            if (diemgannhat - diem < 3) {
+                resutl = "pass";
+            } else {
+                resutl = "false";
+            }
+        }
+        document.getElementById("result").innerHTML = resutl;
+    }
+
+
+
+</script>
+
+</html>

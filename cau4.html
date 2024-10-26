@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Quản Lý Khách Hàng</h1>
+    <form id="customer">
+        <label for="maKhachHang">Mã Khách Hàng:</label>
+        <br>
+        <input type="text" id="maKhachHang" required><br><br>
+        
+        <label for="tenKhachHang">Tên Khách Hàng:</label><br>
+        <input type="text" id="tenKhachHang" required><br><br>
+
+        <label for="soDienThoai">Số Điện Thoại:</label><br>
+        <input type="text" id="soDienThoai" required><br><br>
+
+        <label for="diaChi">Địa Chỉ:</label><br>
+        <input type="text" id="diaChi" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" required><br><br>
+
+        <button type="submit">Thêm Khách Hàng</button>
+    </form>
+
+    <h2>Danh Sách Khách Hàng</h2>
+    <table id="customerLish">
+        <thead>
+            <tr>
+                <th>Mã KH</th>
+                <th>Tên</th>
+                <th>SĐT</th>
+                <th>Địa Chỉ</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const customerForm = document.getElementById('customer');
+        const customerTable = document.getElementById('customerLish').getElementsByTagName('tbody')[0];
+
+        customerForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const maKhachHang = document.getElementById('maKhachHang').value;
+            const tenKhachHang = document.getElementById('tenKhachHang').value;
+            const soDienThoai = document.getElementById('soDienThoai').value;
+            const diaChi = document.getElementById('diaChi').value;
+            const email = document.getElementById('email').value;
+
+            // Thêm hàng mới vào bảng
+            const newRow = customerTable.insertRow();
+            newRow.innerHTML = `
+                <td>${maKhachHang}</td>
+                <td>${tenKhachHang}</td>
+                <td>${soDienThoai}</td>
+                <td>${diaChi}</td>
+                <td>${email}</td>
+            `;
+        });
+    </script>
+</body>
+</html>
